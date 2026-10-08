@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Repo Tree</title>
+  
+  <!-- Repo Tree dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
 </head>
 <body>
   <div id="container">
@@ -16,7 +20,7 @@
     <!-- load error -->
     <div id="error" class="hidden">
       <p>Could not load data from GitHub.</p>
-      <a href=".">Try again</a>
+      <p><a href=".">Try again</a></p>
     </div>
 
     <!-- repo list -->
@@ -75,8 +79,9 @@
       <p><a href=".">← Back to all repos</a></p>
     </div>
   </div>
-
-  <script src="https://cdn.jsdelivr.net/gh/KaioHSG/repo-tree@0.1.0/template/repo-tree/config.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/KaioHSG/repo-tree@v0.1.0/repo-tree.min.js"></script>
+  
+  <!-- config and Repo Tree -->
+  <script src="repo-tree/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/KaioHSG/repo-tree@0.1.1/repo-tree.min.js"></script>
 </body>
 </html>

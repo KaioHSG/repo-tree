@@ -4,8 +4,6 @@
     ? document.currentScript.src.replace(/[^/]*$/, '')
     : 'src/';
   var scripts = [
-    'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/highlight.min.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.1/marked.min.js',
     BASE + 'style.js',
     BASE + 'helper.js',
     BASE + 'utils.js',

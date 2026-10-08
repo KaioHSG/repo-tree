@@ -1,6 +1,6 @@
 {
   "name": "repo-tree",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Repo Tree - GitHub repository browser as a self-contained library",
   "main": "repo-tree.min.js",
   "scripts": {

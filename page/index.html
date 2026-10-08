@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Architect's Sketchbook — repo-tree</title>
+  <title>Architect's Sketchbook — Repo Tree</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- Repo Tree dependencies-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
 </head>
 <body>
 
@@ -24,7 +28,7 @@
     <!-- load error -->
     <div id="error" class="hidden">
       <p>Could not load data from GitHub.</p>
-      <a href=".">Try again</a>
+      <p><a href=".">Try again</a></p>
     </div>
 
     <!-- repo list -->
@@ -85,21 +89,12 @@
   </div>
 
   <div id="site-footer">
-    <span>repo-tree · <a href="https://github.com/KaioHSG/repo-tree">source</a></span>
+    <span>Repo Tree · <a href="https://github.com/KaioHSG/repo-tree">source</a></span>
     <span id="footer-rule"></span>
   </div>
 
-  <!-- config (editable) + repo-tree (local → CDN) -->
+  <!-- config and Repo Tree -->
   <script src="repo-tree/config.js"></script>
-  <script>
-    (function load(src, next) {
-      var s = document.createElement('script');
-      s.src = src;
-      if (next) s.onerror = next;
-      document.body.appendChild(s);
-    })('/repo-tree.min.js', function() {
-      load('https://cdn.jsdelivr.net/gh/KaioHSG/repo-tree@HEAD/repo-tree.min.js');
-    });
-  </script>
+  <script src="https://cdn.jsdelivr.net/gh/KaioHSG/repo-tree@0.1.1/repo-tree.min.js"></script>
 </body>
 </html>
