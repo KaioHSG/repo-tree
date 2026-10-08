@@ -1,0 +1,144 @@
+/* ==================================================================
+   repo-tree.std.css — Complete theme override for repo-tree
+   "Blueprint" variant: blue-line grid, colder tones, drafting feel.
+   Demonstra: CSS per-repo com override completo (std.css)
+   ================================================================== */
+
+:root {
+  --blueprint:      #f0f3f8;
+  --blueprint-dark: #e6ebf2;
+  --card:           #fafcff;
+  --card-border:    #c8d0dc;
+  --ink:            #1e2430;
+  --ink-soft:       #5a6678;
+  --ink-faint:      #a8b2c0;
+  --accent:         #d45c3a;
+  --accent2:        #3a7c8c;
+  --accent3:        #c4a848;
+  --link:           #2c4a78;
+  --thermal:        #1e2430;
+  --thermal-bg:     #e4eaf0;
+  --rule:           #bcc6d4;
+  --grid-size:      24px;
+  --border-radius:  3px;
+}
+
+body {
+  background-color: var(--blueprint);
+  background-image:
+    linear-gradient(   0deg, rgba(140, 160, 190, 0.2) 1px, transparent 1px),
+    linear-gradient(  90deg, rgba(140, 160, 190, 0.2) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: -12px -12px;
+}
+
+#container {
+  background: var(--blueprint-dark);
+  border-color: var(--rule);
+}
+
+#container::before {
+  display: none;
+}
+
+.repo-card {
+  border-width: 2px;
+  box-shadow: none;
+}
+
+.repo-card::before {
+  background-image: linear-gradient(
+    90deg,
+    var(--accent) 0px, var(--accent) 6px,
+    transparent 6px, transparent 18px
+  );
+  background-size: 24px 3px;
+  background-repeat: repeat-x;
+  opacity: 0.6;
+}
+
+.repo-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 2px var(--accent2);
+}
+
+.repo-name {
+  color: var(--link);
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.repo-desc {
+  font-family: 'Georgia', serif;
+}
+
+.repo-lang {
+  color: var(--accent2);
+}
+
+.repo-stars, .repo-forks {
+  color: var(--accent3);
+}
+
+#repo-search {
+  border-bottom-width: 2px;
+  border-bottom-style: double;
+}
+
+#filter-lang, #filter-sort {
+  border-radius: 0;
+  font-family: 'Georgia', serif;
+}
+
+#markdown-content h2::before,
+#markdown-content h3::before {
+  background: var(--accent);
+  width: 2px;
+}
+
+#markdown-content blockquote {
+  border-left-color: var(--accent2);
+}
+
+.code-block {
+  border-width: 2px;
+  border-color: var(--accent2);
+}
+
+.code-block pre {
+  background: var(--thermal-bg);
+  color: var(--thermal);
+}
+
+.copy-btn {
+  font-size: 0.7rem;
+}
+
+.release-item {
+  border-left: 3px solid var(--accent2);
+}
+
+.release-tag {
+  background: rgba(58, 124, 140, 0.12);
+  color: var(--accent2);
+}
+
+#releases {
+  border-top-style: double;
+}
+
+#repo-actions a,
+#repo-actions button {
+  border-radius: 0;
+  font-family: 'Georgia', serif;
+}
+
+#repo-title {
+  font-family: 'Georgia', serif;
+  letter-spacing: 0.01em;
+}
+
+#repo-filepath {
+  border-style: solid;
+  border-color: var(--accent2);
+  font-family: 'Courier New', monospace;
+}

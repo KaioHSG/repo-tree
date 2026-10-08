@@ -1,0 +1,44 @@
+name: Build & Tag Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Version tag (e.g., v1.0.0)'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - run: npm install
+      - run: node build.mjs
+      - name: Bundle template
+        run: |
+          zip -r Repo-Tree.zip template/
+      - name: Commit minified bundle
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add repo-tree.min.js
+          git commit -m "build: minify repo-tree.min.js for ${{ github.event.inputs.tag }}" || true
+          git push origin main || true
+      - name: Tag & push
+        run: |
+          git tag ${{ github.event.inputs.tag }}
+          git push origin ${{ github.event.inputs.tag }}
+      - uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ github.event.inputs.tag }}
+          files: |
+            repo-tree.min.js
+            Repo-Tree.zip

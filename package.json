@@ -1,0 +1,19 @@
+{
+  "name": "repo-tree",
+  "version": "0.1.0",
+  "description": "Repo Tree - GitHub repository browser as a self-contained library",
+  "main": "repo-tree.min.js",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "keywords": [
+    "github",
+    "repository",
+    "browser",
+    "markdown"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.24.2"
+  }
+}

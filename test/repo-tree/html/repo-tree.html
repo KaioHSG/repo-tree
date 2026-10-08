@@ -1,0 +1,85 @@
+<!-- ==================================================================
+     repo-tree.html — Custom HTML for repo-tree view
+     Demonstra: HTML per-repo (substitui #container inteiro)
+     Add a drafting-table header bar above the standard layout.
+     ================================================================== -->
+<div id="drafting-bar">
+  <span id="drafting-project">📐 repo-tree</span>
+  <span id="drafting-scale">scale 1:1</span>
+  <span id="drafting-date"></span>
+</div>
+
+<div id="container">
+  <div id="loading">
+    <p>Loading repositories…</p>
+  </div>
+
+  <div id="error" class="hidden">
+    <p>Could not load data from GitHub.</p>
+    <a href=".">Try again</a>
+  </div>
+
+  <div id="repo-list" class="hidden">
+    <div>
+      <input type="text" id="repo-search" placeholder="Search repos…">
+      <select id="filter-lang"></select>
+      <select id="filter-sort"></select>
+    </div>
+<div id="repo-grid">
+        <a class="repo-name" href=""></a>
+        <div class="repo-desc"></div>
+        <div class="repo-meta">
+          <span class="repo-lang"></span>
+          <span class="repo-stars"></span>
+          <span class="repo-forks"></span>
+          <span class="repo-update"></span>
+        </div>
+      </div>
+    <p id="repo-count"></p>
+  </div>
+
+  <div id="repo-view" class="hidden">
+    <div id="repo-header">
+      <p><a href=".">All repos</a></p>
+      <h1 id="repo-title"></h1>
+      <div id="repo-actions">
+        <a href="" id="view-github" target="_blank" rel="noopener">🔍 View on GitHub</a>
+        <a href="" id="download-zip">📦 Download ZIP</a>
+        <button id="clone-url">🐑 Clone URL</button>
+        <a href="#releases">🏷️ Releases</a>
+      </div>
+    </div>
+
+    <p id="repo-filepath" class="hidden"></p>
+
+    <div id="markdown-content"></div>
+
+    <div id="releases" class="hidden">
+      <h3>
+        <a id="release-heading" href="">🏷️ Releases</a>
+      </h3>
+      <div id="release-list">
+        <div class="release-item">
+          <a class="release-tag" href="" target="_blank" rel="noopener"></a>
+          <span class="release-name"></span>
+          <span class="release-date"></span>
+          <div class="release-assets">
+            <a class="release-asset-link" href="" download></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p><a href=".">Back to all repos</a></p>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var el = document.getElementById('drafting-date');
+  if (el) {
+    var d = new Date();
+    el.textContent = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+});
+</script>

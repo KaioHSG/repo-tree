@@ -1,0 +1,51 @@
+/* ==================================================================
+   repo-tree.css — Additive per-repo CSS for repo-tree
+   Demonstra: CSS aditivo (não substitui o tema global)
+   ================================================================== */
+
+.repo-card {
+  border-left: 3px solid var(--teal);
+}
+
+.repo-card.filtered-out {
+  display: none;
+}
+
+.repo-card:hover .repo-name {
+  font-weight: 700;
+}
+
+#markdown-content table {
+  font-size: 0.85rem;
+}
+
+#markdown-content h2 {
+  letter-spacing: 0.02em;
+}
+
+#repo-actions button#clone-url {
+  position: relative;
+  overflow: hidden;
+}
+
+#repo-actions button#clone-url:active {
+  transform: scale(0.97);
+}
+
+.copy-btn {
+  border-color: var(--terracotta);
+}
+
+.release-item {
+  border-left: 2px solid transparent;
+  transition: border-color 0.25s;
+}
+
+.release-item:hover {
+  border-left-color: var(--teal);
+}
+
+#release-heading {
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
+}
