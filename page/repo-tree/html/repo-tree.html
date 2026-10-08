@@ -1,85 +1,107 @@
 <!-- ==================================================================
-     repo-tree.html — Custom HTML for repo-tree view
-     Demonstra: HTML per-repo (substitui #container inteiro)
-     Add a drafting-table header bar above the standard layout.
+     repo-tree.html — Custom HTML for repo-tree (dramatic demo)
+     Completely different layout: drafting table header, 
+     sidebar stat boxes, full-width markdown, unique footer.
      ================================================================== -->
-<div id="drafting-bar">
-  <span id="drafting-project">📐 repo-tree</span>
-  <span id="drafting-scale">scale 1:1</span>
-  <span id="drafting-date"></span>
+
+<!-- drafting table banner -->
+<div id="dt-header">
+  <div id="dt-title">
+    <span id="dt-icon">📐</span>
+    <span id="dt-project">REPO-TREE</span>
+    <span id="dt-badge">custom</span>
+  </div>
+  <div id="dt-meta">
+    <span id="dt-scale">scale 1:1</span>
+    <span id="dt-date"></span>
+    <span id="dt-author">KaioHSG</span>
+  </div>
 </div>
 
-<div id="container">
-  <div id="loading">
-    <p>Loading repositories…</p>
+<!-- main container (layout bem diferente do base) -->
+<div id="container" style="border-width:2px;border-style:solid;border-color:#bcc6d4;">
+
+  <!-- loading -->
+  <div id="loading" style="text-align:center;padding:64px 24px;">
+    <p style="font-size:0.9rem;color:#5a6678;letter-spacing:0.15em;text-transform:uppercase;">
+      Loading repositories…
+    </p>
   </div>
 
-  <div id="error" class="hidden">
-    <p>Could not load data from GitHub.</p>
-    <a href=".">Try again</a>
+  <!-- error -->
+  <div id="error" class="hidden" style="text-align:center;padding:48px 24px;">
+    <p style="font-size:1.05rem;color:#5a6678;padding:16px 24px;border:2px dashed #d45c3a;background:rgba(212,92,58,0.06);display:inline-block;">
+      Could not load data from GitHub.
+    </p>
+    <p><a href="." style="color:#2c4a78;">Try again</a></p>
   </div>
 
+  <!-- repo list -->
   <div id="repo-list" class="hidden">
-    <div>
-      <input type="text" id="repo-search" placeholder="Search repos…">
-      <select id="filter-lang"></select>
-      <select id="filter-sort"></select>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:8px 0 20px;border-bottom:2px solid #bcc6d4;">
+      <input type="text" id="repo-search" placeholder="Search repos…"
+        style="flex:1;min-width:180px;font:inherit;font-size:0.9rem;color:#1e2430;background:transparent;border:none;border-bottom:2px solid #5a6678;padding:4px 0;outline:none;">
+      <select id="filter-lang"
+        style="font:inherit;font-size:0.8rem;color:#1e2430;background:#fafcff;border:1px solid #c8d0dc;border-radius:0;padding:4px 24px 4px 8px;cursor:pointer;appearance:none;font-family:'Georgia',serif;"></select>
+      <select id="filter-sort"
+        style="font:inherit;font-size:0.8rem;color:#1e2430;background:#fafcff;border:1px solid #c8d0dc;border-radius:0;padding:4px 24px 4px 8px;cursor:pointer;appearance:none;font-family:'Georgia',serif;"></select>
     </div>
-<div id="repo-grid">
-        <a class="repo-name" href=""></a>
-        <div class="repo-desc"></div>
-        <div class="repo-meta">
-          <span class="repo-lang"></span>
-          <span class="repo-stars"></span>
-          <span class="repo-forks"></span>
-          <span class="repo-update"></span>
-        </div>
+    <div id="repo-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;padding:20px 0;">
+      <a class="repo-name" href=""></a>
+      <div class="repo-desc"></div>
+      <div class="repo-meta">
+        <span class="repo-lang"></span>
+        <span class="repo-stars"></span>
+        <span class="repo-forks"></span>
+        <span class="repo-update"></span>
       </div>
-    <p id="repo-count"></p>
+    </div>
+    <p id="repo-count" style="font-size:0.8rem;color:#5a6678;padding:6px 0;border-top:2px solid #bcc6d4;"></p>
   </div>
 
+  <!-- repo view -->
   <div id="repo-view" class="hidden">
-    <div id="repo-header">
-      <p><a href=".">All repos</a></p>
-      <h1 id="repo-title"></h1>
-      <div id="repo-actions">
-        <a href="" id="view-github" target="_blank" rel="noopener">🔍 View on GitHub</a>
-        <a href="" id="download-zip">📦 Download ZIP</a>
-        <button id="clone-url">🐑 Clone URL</button>
-        <a href="#releases">🏷️ Releases</a>
+    <div id="repo-header" style="margin-bottom:20px;border-bottom:2px solid #bcc6d4;padding-bottom:8px;">
+      <p style="margin:0;padding-left:18px;"><a href="." style="color:#5a6678;text-decoration:none;font-size:0.82rem;">All repos</a></p>
+      <h1 id="repo-title" style="font-size:1.6rem;font-weight:600;margin:0 0 4px;line-height:1.2;font-family:'Georgia',serif;"></h1>
+      <div id="repo-actions" style="display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 0;align-items:center;">
+        <a href="" id="view-github" target="_blank" style="font:inherit;font-size:0.78rem;color:#1e2430;background:#fafcff;border:1px solid #c8d0dc;border-radius:0;padding:4px 12px;text-decoration:none;cursor:pointer;font-family:'Georgia',serif;">🔍 View on GitHub</a>
+        <a href="" id="download-zip" style="font:inherit;font-size:0.78rem;color:#1e2430;background:#fafcff;border:1px solid #c8d0dc;border-radius:0;padding:4px 12px;text-decoration:none;cursor:pointer;font-family:'Georgia',serif;">📦 Download ZIP</a>
+        <button id="clone-url" style="font:inherit;font-size:0.78rem;color:#1e2430;background:#fafcff;border:1px solid #c8d0dc;border-radius:0;padding:4px 12px;text-decoration:none;cursor:pointer;font-family:'Georgia',serif;">🐑 Clone URL</button>
+        <a href="#releases" style="font:inherit;font-size:0.78rem;color:#1e2430;background:#fafcff;border:1px solid #c8d0dc;border-radius:0;padding:4px 12px;text-decoration:none;cursor:pointer;font-family:'Georgia',serif;">🏷️ Releases</a>
       </div>
     </div>
 
-    <p id="repo-filepath" class="hidden"></p>
+    <!-- CDN copy field -->
+    <div id="cdn-field">
+      <span>CDN</span>
+      <input id="cdn-url" readonly>
+      <button id="cdn-copy">copy</button>
+    </div>
 
-    <div id="markdown-content"></div>
+    <p id="repo-filepath" class="hidden" style="font-family:monospace;font-size:0.78rem;color:#5a6678;padding:4px 10px;background:rgba(58,124,140,0.06);border:1px solid #3a7c8c;border-radius:3px;"></p>
 
-    <div id="releases" class="hidden">
-      <h3>
-        <a id="release-heading" href="">🏷️ Releases</a>
-      </h3>
-      <div id="release-list">
-        <div class="release-item">
-          <a class="release-tag" href="" target="_blank" rel="noopener"></a>
-          <span class="release-name"></span>
-          <span class="release-date"></span>
-          <div class="release-assets">
-            <a class="release-asset-link" href="" download></a>
+    <div id="markdown-content" style="padding:0;line-height:1.7;"></div>
+
+    <div id="releases" class="hidden" style="margin-top:32px;border-top:2px solid #bcc6d4;padding-top:8px;">
+      <h3><a id="release-heading" href="" style="font-size:1.1rem;font-weight:600;color:#1e2430;text-decoration:none;display:inline-block;margin-bottom:8px;">🏷️ Releases</a></h3>
+      <div id="release-list" style="display:flex;flex-direction:column;gap:10px;">
+        <div class="release-item" style="background:#e6ebf2;border:1px solid #c8d0dc;border-radius:3px;padding:10px 14px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;">
+          <a class="release-tag" href="" target="_blank" style="font-family:monospace;font-size:0.82rem;font-weight:600;color:#3a7c8c;text-decoration:none;padding:2px 8px;background:rgba(58,124,140,0.12);border-radius:3px;"></a>
+          <span class="release-name" style="font-size:0.9rem;color:#1e2430;"></span>
+          <span class="release-date" style="font-size:0.75rem;color:#a8b2c0;"></span>
+          <div class="release-assets" style="margin-top:4px;display:flex;flex-wrap:wrap;gap:4px;width:100%;">
+            <a class="release-asset-link" href="" download style="font-size:0.75rem;color:#5a6678;text-decoration:none;border:1px solid #c8d0dc;padding:2px 8px;border-radius:3px;background:#fafcff;"></a>
           </div>
         </div>
       </div>
     </div>
 
-    <p><a href=".">Back to all repos</a></p>
+    <p style="margin:0;padding-left:18px;"><a href="." style="color:#5a6678;text-decoration:none;font-size:0.82rem;">Back to all repos</a></p>
   </div>
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var el = document.getElementById('drafting-date');
-  if (el) {
-    var d = new Date();
-    el.textContent = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-  }
-});
-</script>
+<!-- drafting table bottom bar -->
+<div id="dt-footer">
+  <span>✏️  blueprint theme · custom html</span>
+</div>
