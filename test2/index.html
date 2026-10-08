@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architect's Sketchbook — repo-tree</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- site header -->
+  <div id="site-header">
+    <a href="." id="site-logo" title="Home">✏️ Architect’s Sketchbook</a>
+    <span id="site-subtitle">KaioHSG · github:repos</span>
+  </div>
+
+  <div id="container">
+
+    <!-- repos loading -->
+    <div id="loading">
+      <p>Loading repositories…</p>
+    </div>
+
+    <!-- load error -->
+    <div id="error" class="hidden">
+      <p>Could not load data from GitHub.</p>
+      <a href=".">Try again</a>
+    </div>
+
+    <!-- repo list -->
+    <div id="repo-list" class="hidden">
+      <div>
+        <input type="text" id="repo-search" placeholder="Search repos…">
+        <select id="filter-lang"></select>
+        <select id="filter-sort"></select>
+      </div>
+      <div id="repo-grid">
+        <a class="repo-name" href=""></a>
+        <div class="repo-desc"></div>
+        <div class="repo-meta">
+          <span class="repo-lang"></span>
+          <span class="repo-stars"></span>
+          <span class="repo-forks"></span>
+          <span class="repo-update"></span>
+        </div>
+      </div>
+      <p id="repo-count"></p>
+    </div>
+
+    <!-- repo viewer -->
+    <div id="repo-view" class="hidden">
+      <div id="repo-header">
+        <p><a href=".">All repos</a></p>
+        <h1 id="repo-title"></h1>
+        <div id="repo-actions">
+          <a href="" id="view-github" target="_blank" rel="noopener">🔍 View on GitHub</a>
+          <a href="" id="download-zip">📦 Download ZIP</a>
+          <button id="clone-url">🐑 Clone URL</button>
+          <a href="#releases">🏷️ Releases</a>
+        </div>
+      </div>
+
+      <p id="repo-filepath" class="hidden"></p>
+
+      <div id="markdown-content"></div>
+
+      <div id="releases" class="hidden">
+        <h3>
+          <a id="release-heading" href="">🏷️ Releases</a>
+        </h3>
+        <div id="release-list">
+          <div class="release-item">
+            <a class="release-tag" href="" target="_blank" rel="noopener"></a>
+            <span class="release-name"></span>
+            <span class="release-date"></span>
+            <div class="release-assets">
+              <a class="release-asset-link" href="" download></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p><a href=".">Back to all repos</a></p>
+    </div>
+  </div>
+
+  <div id="site-footer">
+    <span>repo-tree · <a href="https://github.com/KaioHSG/repo-tree">source</a></span>
+    <span id="footer-rule"></span>
+  </div>
+
+  <!-- config (editable) + repo-tree (built without config) -->
+  <script src="repo-tree/config.js"></script>
+  <script src="/repo-tree.min.js"></script>
+</body>
+</html>

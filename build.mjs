@@ -4,7 +4,6 @@ import { readFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 const FILES = [
   'src/style.js',
   'src/helper.js',
-  'template/repo-tree/config.js',
   'src/utils.js',
   'src/renderer.js',
   'src/api.js',
