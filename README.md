@@ -38,9 +38,8 @@ Or copy `config.example.js` (fully commented) and customize it.
 The page needs [marked.js](https://marked.js.org/) and [highlight.js](https://highlightjs.org/) loaded before `repo-tree.min.js`:
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/highlight.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
-<script src="repo-tree.min.js"></script>
+<script src="repo-tree/config.js" defer></script>
+<script src="repo-tree.min.js" defer></script>
 ```
 
 ### 4. Serve
@@ -58,9 +57,8 @@ https://yoursite.com/?repo/file    → view a specific file
 No download required — but **marked.js and highlight.js must be loaded first**:
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/highlight.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/KaioHSG/repo-tree@0.1.1/repo-tree.min.js"></script>
+<script src="repo-tree/config.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/KaioHSG/repo-tree@0.1.2/repo-tree.min.js" defer></script>
 ```
 
 ---
