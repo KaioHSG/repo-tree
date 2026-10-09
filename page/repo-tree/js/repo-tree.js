@@ -12,7 +12,7 @@
     '#dt-icon{font-size:1.4rem;line-height:1;}' +
     '#dt-project{font-weight:700;font-size:1.05rem;color:#1e2430;' +
     'font-family:\'Georgia\',serif;}' +
-    '#dt-badge{font-size:0.65rem;color:#a8b2c0;text-transform:uppercase;' +
+    '#dt-badge{font-size:0.65rem;color:#65748a ;text-transform:uppercase;' +
     'letter-spacing:0.05em;padding:1px 6px;border:1px solid #3a7c8c;' +
     'border-radius:2px;background:rgba(58,124,140,0.08);}' +
     '#dt-meta{display:flex;align-items:baseline;gap:10px;font-size:0.72rem;color:#a8b2c0;}' +

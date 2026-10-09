@@ -1,4 +1,4 @@
-# Repo Tree
+# [Repo Tree](https://kaiohsg.dev/repo-tree/?repo-tree)
 
 A vanilla HTML/CSS/JS GitHub repository browser. Renders READMEs as Markdown, displays source files with syntax highlighting, lists releases, and supports per-repository customization via CSS, HTML, JS, and config.
 
@@ -8,7 +8,7 @@ A vanilla HTML/CSS/JS GitHub repository browser. Renders READMEs as Markdown, di
 
 ### 1. Copy the template
 
-Copy the `template/` folder to your static server (GitHub Pages, Netlify, Vercel, NGINX, etc).
+Download the `Repo-Tree-Template.zip` folder to your static server (GitHub Pages, Netlify, Vercel, NGINX, etc).
 
 ### 2. Edit config.js
 
@@ -31,18 +31,7 @@ const UI = {
 };
 ```
 
-Or copy `config.example.js` (fully commented) and customize it.
-
-### 3. Add the required CDN libraries
-
-The page needs [marked.js](https://marked.js.org/) and [highlight.js](https://highlightjs.org/) loaded before `repo-tree.min.js`:
-
-```html
-<script src="repo-tree/config.js" defer></script>
-<script src="repo-tree.min.js" defer></script>
-```
-
-### 4. Serve
+### 3. Serve
 
 ```
 https://yoursite.com/              → repository list
@@ -51,15 +40,6 @@ https://yoursite.com/?repo/file    → view a specific file
 ```
 
 ---
-
-## Via CDN (jsDelivr)
-
-No download required — but **marked.js and highlight.js must be loaded first**:
-
-```html
-<script src="repo-tree/config.js" defer></script>
-<script src="https://cdn.jsdelivr.net/gh/KaioHSG/repo-tree@0.1.2/repo-tree.min.js" defer></script>
-```
 
 ---
 
@@ -132,7 +112,7 @@ Generates `repo-tree.min.js`:
 
 ```bash
 npm install
-node build.mjs
+npm run build
 ```
 
 Or via GitHub Actions: trigger the `Build & Tag Release` workflow manually. It creates the bundle, a git tag, a template zip, and a GitHub Release with attached artifacts.
@@ -142,7 +122,7 @@ Or via GitHub Actions: trigger the `Build & Tag Release` workflow manually. It c
 ## Requirements
 
 - **Static HTTP server** (any will do)
-- **Modern browser** (Chrome / Firefox / Edge 2020+, ES2020 with `?.`, `async/await`)
+- **Modern browser** (Chrome / Firefox / Edge 2020+, ES2020 with `?.`, `defer/async/await`)
 - npm + Node.js 18+ (build only)
 
 ---
