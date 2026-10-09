@@ -1,4 +1,6 @@
-# [Repo Tree](https://kaiohsg.dev/repo-tree/?repo-tree)
+# Repo Tree
+
+[![Online Demo](https://img.shields.io/badge/Demo-Available_Here-blue?style=for-the-badge)](https://kaiohsg.dev/repo-tree/)
 
 A vanilla HTML/CSS/JS GitHub repository browser. Renders READMEs as Markdown, displays source files with syntax highlighting, lists releases, and supports per-repository customization via CSS, HTML, JS, and config.
 

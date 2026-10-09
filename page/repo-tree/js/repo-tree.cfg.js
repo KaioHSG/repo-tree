@@ -12,8 +12,8 @@ _ui.repoCount = function(n, total) {
 _ui.anchorIcon = '📐';
 
 _ui.shields = {
-  style: 'flat-square',
-  color: '3a7c8c'
+  style: 'social',
+  color: 'none'
 };
 
 _ui.copyIcon = '📋';
