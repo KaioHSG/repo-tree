@@ -38,7 +38,7 @@ jobs:
           zip -r Repo-Tree-Template.zip template/*
       - uses: softprops/action-gh-release@v3
         with:
-          name: "GopherGuard - ${{ github.event.inputs.tag }}"
+          name: "Repo Tree - ${{ github.event.inputs.tag }}"
           tag_name: ${{ github.event.inputs.tag }}
           files: |
             Repo-Tree-Template.zip
