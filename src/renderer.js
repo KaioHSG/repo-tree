@@ -48,11 +48,24 @@ function createRenderer(repo, branch, file) {
         const shields = UI.shields || {};
         const s = shields.style;
         const c = shields.color;
-        const params = [];
-        if (s && s !== 'none') params.push('style=' + s);
-        if (c && c !== 'none') params.push('color=' + c);
-        if (params.length)
-          src += (src.includes('?') ? '&' : '?') + params.join('&');
+        const sep = src.indexOf('?');
+        const params = {};
+        if (sep !== -1) {
+          src.substring(sep + 1).split('&').forEach(p => {
+            if (!p) return;
+            const kv = p.split('=');
+            params[decodeURIComponent(kv[0])] =
+              kv.length > 1 ? decodeURIComponent(kv.slice(1).join('=')) : '';
+          });
+          src = src.substring(0, sep);
+        }
+        if (s) (s === 'none' ? delete params.style : params.style = s);
+        if (c) (c === 'none' ? delete params.color : params.color = c);
+        const keys = Object.keys(params);
+        if (keys.length)
+          src += '?' + keys.map(k =>
+            params[k] !== '' ? k + '=' + params[k] : k
+          ).join('&');
       }
       return img(src, escapeHtml(text));
     },
