@@ -1,4 +1,4 @@
-// kaiohsg.github.io — per-repo config override (tema Y2K do home)
+// kaiohsg.github.io - per-repo config override (tema Y2K do home)
 // Mesmos textos e frescuras do meu site, aplicados no repo-tree.
 
 _ui.showReadme = '← Ver README';

@@ -1,4 +1,4 @@
-// repo-tree.js — Per-repo JS (dramatic demo)
+// repo-tree.js - Per-repo JS (dramatic demo)
 // Mostra JS customizado com stats, CDN copy, atalho
 
 (function(repo, url) {

@@ -1,7 +1,9 @@
 /* ==================================================================
-   repo-tree.std.css — Complete theme override
+   repo-tree.std.css - Complete theme override
    "Blueprint" variant: blue-line grid, serif, drafting feel.
    ================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap');
 
 :root {
   --blueprint:      #f0f3f8;
@@ -19,7 +21,7 @@
   --rule:           #bcc6d4;
   --grid-size:      24px;
   --border-radius:  3px;
-  --sans:           'Georgia', 'Times New Roman', 'Iowan Old Style', serif;
+  --sans:           'Georgia', 'Times New Roman', 'Iowan Old Style', 'Noto Color Emoji', serif;
   --mono:           'Cascadia Code', 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 }
 
@@ -283,7 +285,7 @@ body {
 #repo-header > p:first-child,
 #repo-view > p:last-child {
   margin: 0;
-  padding-left: 18px;
+  padding-left: 22px;
   position: relative;
 }
 

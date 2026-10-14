@@ -133,7 +133,7 @@ Or via GitHub Actions: trigger the `Build & Tag Release` workflow manually. It c
 
 - HTML5 + CSS3
 - JavaScript (vanilla, no frameworks)
-- [marked.js](https://marked.js.org/) — Markdown renderer
-- [highlight.js](https://highlightjs.org/) — syntax highlighting
-- [shields.io](https://shields.io/) — badges
-- [esbuild](https://esbuild.github.io/) — minification (build tool)
+- [marked.js](https://marked.js.org/) - Markdown renderer
+- [highlight.js](https://highlightjs.org/) - syntax highlighting
+- [shields.io](https://shields.io/) - badges
+- [esbuild](https://esbuild.github.io/) - minification (build tool)

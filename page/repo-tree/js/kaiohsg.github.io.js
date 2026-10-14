@@ -1,4 +1,4 @@
-// kaiohsg.github.io — per-repo custom JS (roda após o render)
+// kaiohsg.github.io - per-repo custom JS (roda após o render)
 // Anima o contador de visitantes fake e aplica .emoji-plain nos
 // emojis dos títulos (h1–h6) e do restante do README, removendo o
 // text-shadow neon dos glifos coloridos (mesmo efeito do home).
@@ -65,3 +65,15 @@
   [].forEach.call(content.querySelectorAll('h1, h2, h3, h4, h5, h6'), wrap);
   wrap(content);
 })(UI, CONFIG, repoName, repoUrl);
+
+document.title = "KaioHSG.Dev - Repo Tree";
+
+let favicon = document.querySelector("link[rel~='icon']");
+
+if (!favicon) {
+  favicon = document.createElement("link");
+  favicon.rel = "icon";
+  document.head.appendChild(favicon);
+}
+
+favicon.href = "https://kaiohsg.dev/assets/imgs/mona-emoji/globe-showing-americas.ico";

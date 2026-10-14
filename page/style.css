@@ -1,7 +1,9 @@
 /* ==================================================================
-   ARCHITECT'S SKETCHBOOK — repo-tree global theme
+   ARCHITECT'S SKETCHBOOK - repo-tree global theme
    Paper, pencil, grid. Warm, tactile, unhurried.
    ================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap');
 
 :root {
   --paper:         #f5f0e6;
@@ -20,7 +22,7 @@
   --thermal-line:  #c0d4c0;
   --grid-size:     24px;
   --rule:          #d4cdbf;
-  --sans:          'Inter', 'Segoe UI', system-ui, sans-serif;
+  --sans:          'Inter', 'Segoe UI', 'Noto Color Emoji', system-ui, sans-serif;
   --mono:          'Cascadia Code', 'JetBrains Mono', 'Fira Code', 'Cascadia Mono', 'Consolas', monospace;
   --border-radius: 4px;
 }
@@ -383,7 +385,7 @@ body {
 #repo-header > p:first-child,
 #repo-view > p:last-child {
   margin: 0;
-  padding-left: 18px;
+  padding-left: 22px;
   position: relative;
 }
 

@@ -1,9 +1,9 @@
-// repo-tree.cfg.js — Per-repo config override (dramatic demo)
+// repo-tree.cfg.js - Per-repo config override (dramatic demo)
 // Demonstra: alterar UI text, tema highlight, extensões, etc.
 
 _ui.siteName = 'repo-tree · blueprint';
 
-_ui.noDescription = '— blueprint project —';
+_ui.noDescription = '- blueprint project -';
 _ui.noReposFound = 'no repos match the filter';
 _ui.repoCount = function(n, total) {
   return n + ' of ' + total + ' blueprints';

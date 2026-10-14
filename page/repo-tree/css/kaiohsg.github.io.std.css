@@ -1,5 +1,5 @@
 /* ==================================================================
-   kaiohsg.github.io.std.css — Complete theme override
+   kaiohsg.github.io.std.css - Complete theme override
    "Y2K Neon" variant: home do kaiohsg.dev (Web 1.0 em pleno 2026).
    Comic Sans, verde fosforito, bordas ridge e neon magenta/cyan.
    ================================================================== */
@@ -9,7 +9,7 @@
 @font-face {
   font-family: 'Mona Emoji';
   src:
-    url('https://kaiohsg.dev/assets/font/mona-emoji/Mona12ColorEmoji.woff2') format('woff2');
+    url('https://kaiohsg.dev/assets/fonts/mona-emoji/Mona12ColorEmoji.woff2') format('woff2');
   font-display: swap;
 }
 
@@ -105,7 +105,7 @@ body {
   #container { max-width: 100%; margin: 8px auto; padding: 6px; border-width: 3px; }
 }
 
-/* ── Site header (hidden — o HTML custom traz o próprio título) ── */
+/* ── Site header (hidden - o HTML custom traz o próprio título) ── */
 
 #site-header {
   display: none !important;

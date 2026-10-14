@@ -29,7 +29,7 @@ const SORT_OPTIONS = [
 ];
 
 const UI = {
-  siteName: 'Architect’s Sketchbook',
+  siteName: 'Repo Tree',
   searchPlaceholder: 'type to filter...',
   allLanguages: 'All languages',
 
@@ -59,7 +59,7 @@ const UI = {
   errorLoading: (name, msg) => 'Error loading "' + name + '": ' + (msg || 'unknown'),
   blockedAllowed: (exts) => 'Only ' + exts.join(', ') + ' files can be viewed.',
   blockedExcluded: (ext) => 'File type ' + ext + ' is excluded.',
-  blockedTitle: (repo) => repo + ' — blocked',
+  blockedTitle: (repo) => repo + ' - blocked',
 
   untaggedRelease: '(untagged)',
 
