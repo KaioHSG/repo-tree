@@ -41,5 +41,5 @@ _ui.repoCount = function(n, total) {
   return n + ' / ' + total + ' repos';
 };
 
-_config.highlightTheme = 'atom-one-dark';
+_config.highlightTheme = 'far';
 _config.allowedExtensions = ['.md', '.html', '.css', '.js', '.json', '.txt'];
