@@ -15,14 +15,18 @@
   <!-- site header -->
   <div id="site-header">
     <a href="." id="site-logo" title="Home">✏️ Architect’s Sketchbook</a>
-    <span id="site-subtitle">KaioHSG · github:repos</span>
+    <span id="site-subtitle">
+      <a href="https://kaiohsg.dev" class="subtitle-author">KaioHSG.Dev</a>
+      <span class="subtitle-sep" aria-hidden="true">·</span>
+      <a href="https://github.com/KaioHSG/repo-tree" class="subtitle-repo">KaioHSG/repo-tree</a>
+    </span>
   </div>
 
   <div id="container">
 
     <!-- repos loading -->
     <div id="loading">
-      <p>Loading repositories…</p>
+      <p>Loading repositories...</p>
     </div>
 
     <!-- load error -->
@@ -34,7 +38,7 @@
     <!-- repo list -->
     <div id="repo-list" class="hidden">
       <div>
-        <input type="text" id="repo-search" placeholder="Search repos…">
+        <input type="text" id="repo-search" placeholder="Search repos...">
         <select id="filter-lang"></select>
         <select id="filter-sort"></select>
       </div>

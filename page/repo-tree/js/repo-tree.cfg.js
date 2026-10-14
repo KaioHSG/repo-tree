@@ -9,7 +9,7 @@ _ui.repoCount = function(n, total) {
   return n + ' of ' + total + ' blueprints';
 };
 
-_ui.anchorIcon = '📐';
+_ui.anchorIcon = '¶';
 
 _ui.shields = {
   style: 'social',

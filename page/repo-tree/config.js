@@ -30,7 +30,7 @@ const SORT_OPTIONS = [
 
 const UI = {
   siteName: 'Architect’s Sketchbook',
-  searchPlaceholder: 'type to filter…',
+  searchPlaceholder: 'type to filter...',
   allLanguages: 'All languages',
 
   repoStarsIcon: '★ ',
@@ -52,7 +52,7 @@ const UI = {
 
   noReposFound: 'No repositories match your filters.',
   fileNotFound: 'This file was not found in the repository.',
-  loading: 'Loading…',
+  loading: 'Loading...',
   errorLoad: 'Could not load repositories. Try again later.',
   errorRateLimited: 'GitHub API rate limit exceeded. Please try again later.',
   errorRepoNotFound: (name) => 'Repository "' + name + '" not found.',
