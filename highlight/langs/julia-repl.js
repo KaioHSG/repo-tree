@@ -1,0 +1,1 @@
+(()=>{function a(l){return{name:"Julia REPL",contains:[{className:"meta.prompt",begin:/^julia>/,relevance:10,starts:{end:/^(?![ ]{6})/,subLanguage:"julia"}}],aliases:["jldoctest"]}}var e=globalThis.hljs;if(e&&a&&!e.getLanguage("julia-repl"))try{e.registerLanguage("julia-repl",a)}catch{}})();

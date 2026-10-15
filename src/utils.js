@@ -33,6 +33,14 @@ function show(id) {
   const el = document.getElementById(id);
   if (el) el.classList.remove('hidden');
   document.body.classList.add('loaded');
+  // Keep the page footer out of the layout while the loading screen is up so
+  // it is not displaced when the view swaps from the small spinner to the full
+  // content (avoids a large CLS contribution on short pages).
+  const footer = document.getElementById('site-footer');
+  if (footer) {
+    if (id === 'loading') footer.classList.add('hidden');
+    else footer.classList.remove('hidden');
+  }
 }
 
 // error screen

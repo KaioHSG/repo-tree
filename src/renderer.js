@@ -66,8 +66,9 @@ function createRenderer(repo, branch, file) {
           src += '?' + keys.map(k =>
             params[k] !== '' ? k + '=' + params[k] : k
           ).join('&');
+        return img(src, escapeHtml(text));
       }
-      return img(src, escapeHtml(text));
+      return _h('img', { src, alt: escapeHtml(text), loading: 'lazy', decoding: 'async' });
     },
 
     br() { return '<br>\n'; },

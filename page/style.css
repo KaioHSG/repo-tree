@@ -3,7 +3,7 @@
    Paper, pencil, grid. Warm, tactile, unhurried.
    ================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap');
+/* Emoji rendering uses each platform's system emoji font (no web font download). */
 
 :root {
   --paper:         #f5f0e6;
@@ -22,7 +22,7 @@
   --thermal-line:  #c0d4c0;
   --grid-size:     24px;
   --rule:          #d4cdbf;
-  --sans:          'Inter', 'Segoe UI', 'Noto Color Emoji', system-ui, sans-serif;
+  --sans:          'Inter', 'Segoe UI', system-ui, 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif;
   --mono:          'Cascadia Code', 'JetBrains Mono', 'Fira Code', 'Cascadia Mono', 'Consolas', monospace;
   --border-radius: 4px;
 }
@@ -35,6 +35,7 @@ html {
   font-size: 15px;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -659,16 +660,12 @@ h6:hover .heading-anchor {
   padding: 0;
 }
 
-#markdown-content pre code:not(.hljs) {
+#markdown-content pre code,
+#markdown-content pre code:not(.hljs),
+#markdown-content pre code.hljs {
   display: block;
-  padding: 12px 14px;
-  background: var(--thermal-bg);
-  font-family: var(--mono);
-  font-size: 0.82rem;
-  line-height: 1.55;
-  overflow-x: auto;
-  border: 1px solid var(--card-border);
-  border-radius: var(--border-radius);
+  padding: 0;
+  background: none;
 }
 
 #markdown-content code:not(.hljs) {

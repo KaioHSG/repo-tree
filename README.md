@@ -12,6 +12,10 @@ A vanilla HTML/CSS/JS GitHub repository browser. Renders READMEs as Markdown, di
 
 Download the `Repo-Tree-Template.zip` folder to your static server (GitHub Pages, Netlify, Vercel, NGINX, etc).
 
+That's all you need: the template loads `repo-tree.min.js` from a CDN, and the library is **self-sufficient** — syntax-highlighting languages and themes are fetched from the same CDN `highlight/` folder **on demand** (only the first time a language/theme is used). You keep no language files in your repo.
+
+For a **fully local** setup, download `repo-tree.min.js` + `Highlight.zip` from the release and place `highlight/` next to `repo-tree.min.js` — the bundle auto-detects its own location, so no config is needed. (Override with `CONFIG.langBase` / `CONFIG.stylesBase` for custom paths.)
+
 ### 2. Edit config.js
 
 Edit `template/repo-tree/config.js`:
@@ -24,7 +28,9 @@ const CONFIG = {
   excludeRepos: [],           // repos hidden from listing
   allowedExtensions: ['.md', '.txt'],
   excludeExtensions: [],
-  highlightTheme: '1c-light', // highlight.js theme
+  highlightTheme: '1c-light', // highlight.js theme (from highlight/styles/)
+  // langBase: 'repo-tree/highlight/langs/',   // optional: custom language modules path
+  // stylesBase: 'repo-tree/highlight/styles/', // optional: custom theme path
   extensionToLang: { '.md': 'markdown', '.js': 'javascript', ... }
 };
 const UI = {
@@ -110,14 +116,16 @@ Long form (for filter query params on the listing page):
 
 ## Building (minifying)
 
-Generates `repo-tree.min.js`:
+Generates `repo-tree.min.js` plus the self-sufficient `highlight/` assets (`highlight/langs/` language modules and `highlight/styles/` highlight.js themes):
 
 ```bash
 npm install
 npm run build
 ```
 
-Or via GitHub Actions: trigger the `Build & Tag Release` workflow manually. It creates the bundle, a git tag, a template zip, and a GitHub Release with attached artifacts.
+Or via GitHub Actions: trigger the `Build & Tag Release` workflow manually. It regenerates `repo-tree.min.js` and the `highlight/` assets, commits them, creates the tag and a GitHub Release with `Repo-Tree-Template.zip`, `Highlight.zip` and the bundle.
+
+> **Release note:** the tag must match `package.json`'s version (language/theme assets are served from the same CDN tag as the bundle). Update the version pins in `page/index.html` and `template/index.html` when releasing. The workflow commits `repo-tree.min.js` + `highlight/` itself — no need to pre-commit them.
 
 ---
 

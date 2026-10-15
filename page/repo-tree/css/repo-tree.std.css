@@ -3,7 +3,7 @@
    "Blueprint" variant: blue-line grid, serif, drafting feel.
    ================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap');
+/* Emoji rendering uses each platform's system emoji font (no web font download). */
 
 :root {
   --blueprint:      #f0f3f8;
@@ -21,7 +21,7 @@
   --rule:           #bcc6d4;
   --grid-size:      24px;
   --border-radius:  3px;
-  --sans:           'Georgia', 'Times New Roman', 'Iowan Old Style', 'Noto Color Emoji', serif;
+  --sans:           'Georgia', 'Times New Roman', 'Iowan Old Style', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', serif;
   --mono:           'Cascadia Code', 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 }
 
@@ -33,6 +33,7 @@ html {
   font-size: 15px;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -563,16 +564,12 @@ h6:hover .heading-anchor {
   padding: 0;
 }
 
-#markdown-content pre code:not(.hljs) {
+#markdown-content pre code,
+#markdown-content pre code:not(.hljs),
+#markdown-content pre code.hljs {
   display: block;
-  padding: 12px 14px;
-  background: var(--thermal-bg);
-  font-family: var(--mono);
-  font-size: 0.82rem;
-  line-height: 1.55;
-  overflow-x: auto;
-  border: 1px solid var(--card-border);
-  border-radius: var(--border-radius);
+  padding: 0;
+  background: none;
 }
 
 #markdown-content code:not(.hljs) {

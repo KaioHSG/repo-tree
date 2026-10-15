@@ -173,16 +173,17 @@ async function loadRepoCustomJS(repoName, repoUrl) {
 
 function loadHighlightTheme() {
   var theme = CONFIG.highlightTheme || 'default';
+  var href = stylesBaseDir() + encodeURIComponent(theme) + '.min.css';
   var id = 'hljs-theme';
   var existing = document.getElementById(id);
   if (existing) {
-    existing.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/styles/' + theme + '.min.css';
+    existing.href = href;
     return;
   }
   var link = document.createElement('link');
   link.id = id;
   link.rel = 'stylesheet';
-  link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.12.0/styles/' + theme + '.min.css';
+  link.href = href;
   document.head.appendChild(link);
 }
 
@@ -223,7 +224,7 @@ function renderContent(el, content, file, repoName, branch) {
     var lang = getLangForExtension(file);
     el.innerHTML = h('pre', null, h('code', 'language-' + lang, escapeHtml(content)));
   }
-  try { el.querySelectorAll('pre code').forEach(function(e) { hljs.highlightElement(e); }); } catch (_) {}
+  highlightCodeBlocks(el);
 
   var U = UI;
   el.querySelectorAll('pre').forEach(function(pre) {
