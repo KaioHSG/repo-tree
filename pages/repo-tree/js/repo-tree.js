@@ -48,7 +48,7 @@
   }
 
   // ── version + CDN copy ──
-  var ver = '0.2.2';
+  var ver = '0.2.3';
   var titleEl = document.getElementById('repo-title');
   if (titleEl) {
     var vBadge = document.createElement('span');

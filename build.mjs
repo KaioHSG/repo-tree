@@ -104,7 +104,7 @@ function sourceBlob() {
 }
 
 function header() {
-  return '/* Repo Tree v0.2.2 - https://github.com/KaioHSG/repo-tree\n' +
+  return '/* Repo Tree v0.2.3 - https://github.com/KaioHSG/repo-tree\n' +
     '   LICENSE: MIT | Built: ' + new Date().toISOString().slice(0, 10) + '\n' +
     '   Bundled: marked ' + MARKED_VERSION + ', highlight.js core ' + HLJS_VERSION +
     ' (+ ' + BASE_LANGS.length + ' base languages, ' + meta.length + ' lazy modules) */\n';

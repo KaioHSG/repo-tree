@@ -2,10 +2,10 @@
 //
 // The core bundle only registers a small base set (see BASE_LANGS in
 // build.mjs). When a code block declares a language that is not registered
-// yet, the matching module from <assets>/highlight/langs/<file>.js is fetched
+// yet, the matching module from <assets>/highlights/langs/<file>.js is fetched
 // on demand and registered before highlighting. Unknown languages degrade to
 // plain text. <assets> is auto-discovered from the bundle's own script URL, so
-// a fully local site just needs repo-tree.min.js + the highlight/ folder side
+// a fully local site just needs repo-tree.min.js + the highlights/ folder side
 // by side (no config); a CDN build resolves to the CDN automatically.
 
 // Captured once while the script is executing synchronously (document.currentScript).
@@ -20,14 +20,14 @@ var _langFailed = {};
 function langBaseDir() {
   var b = (typeof CONFIG !== 'undefined' && CONFIG && CONFIG.langBase)
     ? CONFIG.langBase
-    : (ASSET_BASE + 'highlight/langs/');
+    : (ASSET_BASE + 'highlights/langs/');
   return b.replace(/\/?$/, '/');
 }
 
 function stylesBaseDir() {
   var b = (typeof CONFIG !== 'undefined' && CONFIG && CONFIG.stylesBase)
     ? CONFIG.stylesBase
-    : (ASSET_BASE + 'highlight/styles/');
+    : (ASSET_BASE + 'highlights/styles/');
   return b.replace(/\/?$/, '/');
 }
 
