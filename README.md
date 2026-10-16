@@ -17,8 +17,8 @@ That's all you need: the template loads `repo-tree.min.js` from a CDN, and the l
 For a **fully local** setup, download `repo-tree.min.js` + `Highlights.zip` from the release and place `highlights/` next to `repo-tree.min.js`. Then in `index.html`, replace the CDN `<script>` with the local file:
 
 ```diff
-- <script src="https://cdn.jsdelivr.net/gh/KaioHSG/repo-tree@0.2.3/repo-tree.min.js" defer></script>
-+ <script src="./repo-tree.min.js" defer></script>
+-<script src="https://cdn.jsdelivr.net/gh/KaioHSG/repo-tree@0.2.3/repo-tree.min.js" defer></script>
++<script src="./repo-tree.min.js" defer></script>
 ```
 
 The bundle auto-detects its own location, so no config is needed. (Override with `CONFIG.langBase` / `CONFIG.stylesBase` for custom paths.)
