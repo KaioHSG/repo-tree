@@ -14,11 +14,25 @@ Download the `Repo-Tree-Template.zip` folder to your static server (GitHub Pages
 
 That's all you need: the template loads `repo-tree.min.js` from a CDN, and the library is **self-sufficient** — syntax-highlighting languages and themes are fetched from the same CDN `highlights/` folder **on demand** (only the first time a language/theme is used). You keep no language files in your repo.
 
-For a **fully local** setup, download `repo-tree.min.js` + `Highlights.zip` from the release and place `highlights/` next to `repo-tree.min.js` — the bundle auto-detects its own location, so no config is needed. (Override with `CONFIG.langBase` / `CONFIG.stylesBase` for custom paths.)
+For a **fully local** setup, download `repo-tree.min.js` + `Highlights.zip` from the release and place `highlights/` next to `repo-tree.min.js`. Then in `index.html`, replace the CDN `<script>` with the local file:
+
+```diff
+- <script src="https://cdn.jsdelivr.net/gh/KaioHSG/repo-tree@0.2.3/repo-tree.min.js" defer></script>
++ <script src="./repo-tree.min.js" defer></script>
+```
+
+The bundle auto-detects its own location, so no config is needed. (Override with `CONFIG.langBase` / `CONFIG.stylesBase` for custom paths.)
+
+If you don't want to use the template, just add these two scripts to your existing HTML:
+
+```html
+<script src="./repo-tree/config.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/KaioHSG/repo-tree@0.2.3/repo-tree.min.js" defer></script>
+```
 
 ### 2. Edit config.js
 
-Edit `template/repo-tree/config.js`:
+Edit `repo-tree/config.js`:
 
 ```js
 const USER = 'your-username';
@@ -49,11 +63,9 @@ https://yoursite.com/?repo/file    → view a specific file
 
 ---
 
----
-
 ## Per-repo customization
 
-For a repo named `my-repo`, create files under `template/repo-tree/`:
+For a repo named `my-repo`, create files under `repo-tree/`:
 
 ### CSS (`css/`)
 
