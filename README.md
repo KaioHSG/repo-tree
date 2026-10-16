@@ -1,3 +1,7 @@
+[![Release](https://img.shields.io/github/v/release/KaioHSG/repo-tree)](https://github.com/KaioHSG/repo-tree/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/KaioHSG/repo-tree/total)](https://github.com/KaioHSG/repo-tree/releases)
+[![Hits](https://img.shields.io/jsdelivr/gh/hm/KaioHSG/repo-tree)](https://www.jsdelivr.com/package/gh/KaioHSG/repo-tree)
+
 # Repo Tree
 
 A vanilla HTML/CSS/JS GitHub repository browser. Renders READMEs as Markdown, displays source files with syntax highlighting, lists releases, and supports per-repository customization via CSS, HTML, JS, and config.
