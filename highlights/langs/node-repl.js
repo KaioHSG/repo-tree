@@ -1,0 +1,1 @@
+(()=>{function e(n){return{name:"Node REPL",contains:[{className:"meta.prompt",starts:{end:/ |$/,starts:{end:"$",subLanguage:"javascript"}},variants:[{begin:/^>(?=[ ]|$)/},{begin:/^\.\.\.(?=[ ]|$)/}]}]}}var a=globalThis.hljs;if(a&&e&&!a.getLanguage("node-repl"))try{a.registerLanguage("node-repl",e)}catch{}})();

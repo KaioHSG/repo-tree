@@ -1,0 +1,1 @@
+(()=>{function t(n){return{aliases:["pycon"],contains:[{className:"meta.prompt",starts:{end:/ |$/,starts:{end:"$",subLanguage:"python"}},variants:[{begin:/^>>>(?=[ ]|$)/},{begin:/^\.\.\.(?=[ ]|$)/}]}]}}var a=globalThis.hljs;if(a&&t&&!a.getLanguage("python-repl"))try{a.registerLanguage("python-repl",t)}catch{}})();

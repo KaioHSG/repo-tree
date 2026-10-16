@@ -22,9 +22,9 @@ const HLJS_VERSION = require('highlight.js/package.json').version;
 
 const LANG_SRC_DIR = path.join(__dirname, 'node_modules/highlight.js/lib/languages');
 const STYLES_SRC_DIR = path.join(__dirname, 'node_modules/highlight.js/styles');
-const HIGHLIGHT_DIR = 'highlight';
-const LANG_OUT_DIR = path.join(HIGHLIGHT_DIR, 'langs');
-const STYLES_OUT_DIR = path.join(HIGHLIGHT_DIR, 'styles');
+const HIGHLIGHTS_DIR = 'highlights';
+const LANG_OUT_DIR = path.join(HIGHLIGHTS_DIR, 'langs');
+const STYLES_OUT_DIR = path.join(HIGHLIGHTS_DIR, 'styles');
 
 // Languages registered inline in the core bundle. They are the ones that
 // cover most real-world content and the auto-detect fallback used for code
@@ -104,7 +104,7 @@ function sourceBlob() {
 }
 
 function header() {
-  return '/* Repo Tree v1.0.0 - https://github.com/KaioHSG/repo-tree\n' +
+  return '/* Repo Tree v0.2.2 - https://github.com/KaioHSG/repo-tree\n' +
     '   LICENSE: MIT | Built: ' + new Date().toISOString().slice(0, 10) + '\n' +
     '   Bundled: marked ' + MARKED_VERSION + ', highlight.js core ' + HLJS_VERSION +
     ' (+ ' + BASE_LANGS.length + ' base languages, ' + meta.length + ' lazy modules) */\n';
@@ -241,7 +241,7 @@ async function buildLangModules() {
     if (size > 60 * 1024) console.log('  big: ' + m.file + '.js (' + (size / 1024).toFixed(1) + ' KB)');
   }
 
-  console.log('Languages OK: ' + count + ' modules, ' + (total / 1024).toFixed(1) + ' KB total -> ' + LANG_OUT_DIR + '/');
+  console.log('Languages OK: ' + count + ' modules, ' + (total / 1024).toFixed(1) + ' KB total -> ' + LANG_OUT_DIR);
 }
 
 // ---------------------------------------------------------------------------
@@ -259,7 +259,7 @@ async function buildStyles() {
     copyFileSync(src, path.join(STYLES_OUT_DIR, f));
     total += readFileSync(path.join(STYLES_OUT_DIR, f), 'utf8').length;
   }
-  console.log('Styles OK: ' + files.length + ' themes, ' + (total / 1024).toFixed(1) + ' KB total -> ' + STYLES_OUT_DIR + '/');
+  console.log('Styles OK: ' + files.length + ' themes, ' + (total / 1024).toFixed(1) + ' KB total -> ' + STYLES_OUT_DIR);
 }
 
 // ---------------------------------------------------------------------------
