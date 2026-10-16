@@ -26,7 +26,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add repo-tree.min.js highlight/
+          git add repo-tree.min.js highlights/
           git commit -m "build: regenerate repo-tree.min.js + highlights for ${{ github.event.inputs.tag }}" || true
           git push origin main || true
       - name: Tag & push
