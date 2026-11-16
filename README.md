@@ -47,6 +47,7 @@ const CONFIG = {
   allowedExtensions: ['.md', '.txt'],
   excludeExtensions: [],
   highlightTheme: '1c-light', // highlight.js theme (from highlights/styles/)
+  sanitize: true,             // sanitize HTML rendered from Markdown (see Security)
   // langBase: 'repo-tree/highlights/langs/',   // optional: custom language modules path
   // stylesBase: 'repo-tree/highlights/styles/', // optional: custom theme path
   extensionToLang: { '.md': 'markdown', '.js': 'javascript', ... }
@@ -130,6 +131,22 @@ Long form (for filter query params on the listing page):
 
 ---
 
+## Security
+
+Repo content is fetched from `raw.githubusercontent.com` and injected with `innerHTML`, so it **never passes through GitHub's own server-side sanitizer**. Repo Tree compensates:
+
+- **Markdown HTML is sanitized by default.** An allowlist pass (parsed in an inert `DOMParser`, so nothing runs while inspecting) drops `<script>`, event-handler attributes (`onerror`, `onclick`…), `javascript:`/`data:` URLs (except safe `data:image/*` on `<img>`), and unknown/embedded elements. Set `CONFIG.sanitize: false` only for content you fully trust.
+- **Link/image URLs** are additionally checked at render time, so `CONFIG.sanitize: false` still won't produce `javascript:` links.
+
+Two trust boundaries to keep in mind:
+
+1. **Only display repositories you trust.** The sanitizer removes script-based attacks, but a README can still mislead, impersonate, or load arbitrary remote images.
+2. **Per-repo assets execute as code.** `css/*.css` and `html/*.html` are injected, and `js/*.js` + `js/*.cfg.js` run via `new Function` — the whole point of the customization feature. Treat everything under `CONFIG.base` as trusted first-party content.
+
+If you use a Content-Security-Policy, note that the per-repo JS feature requires `'unsafe-eval'`; a policy without it disables `js/*.js`/`*.cfg.js` but keeps everything else working.
+
+---
+
 ## Building (minifying)
 
 Generates `repo-tree.min.js` plus the self-sufficient `highlights/` assets (`highlights/langs/` language modules and `highlights/styles/` highlight.js themes):
@@ -141,7 +158,17 @@ npm run build
 
 Or via GitHub Actions: trigger the `Build & Tag Release` workflow manually. It regenerates `repo-tree.min.js` and the `highlights/` assets, commits them, creates the tag and a GitHub Release with `Repo-Tree-Template.zip`, `Highlights.zip` and the bundle.
 
-> **Release note:** the tag must match `package.json`'s version (language/theme assets are served from the same CDN tag as the bundle). Update the version pins in `page/index.html` and `template/index.html` when releasing. The workflow commits `repo-tree.min.js` + `highlights/` itself — no need to pre-commit them.
+> **Release note:** the tag must match `package.json`'s version (language/theme assets are served from the same CDN tag as the bundle). `npm run build` keeps the CDN version pins in `template/index.html`, `pages/index.html` and the README in sync with `package.json` automatically. The workflow commits `repo-tree.min.js` + `highlights/` itself — no need to pre-commit them.
+
+---
+
+## Testing
+
+Unit tests cover the dependency-free units (`helper.js`, `utils.js`, `sanitize.js`, `renderer.js`) and a syntax check parses every `src/*.js` plus the built bundle. They use the built-in `node:test` runner; the only dev dependency is `linkedom`, to provide a DOM for the sanitizer tests:
+
+```bash
+npm test
+```
 
 ---
 
