@@ -18,6 +18,12 @@
     var s = document.createElement('script');
     s.src = scripts[i++];
     s.onload = next;
+    s.onerror = function() {
+      // Keep the chain going instead of silently stalling: the broken
+      // script is logged so the root cause is visible in the console.
+      console.error('repo-tree: failed to load ' + s.src);
+      next();
+    };
     document.body.appendChild(s);
   }
   next();

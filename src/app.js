@@ -271,7 +271,7 @@ function showFilepath(el, file) {
 
 async function loadRepoView(repoName, fileName) {
   if (!isRepoShown(repoName)) {
-    showError(UI.errorRepoNotFound(escapeHtml(repoName)));
+    showError(UI.errorRepoNotFound(repoName));
     return;
   }
 
@@ -348,14 +348,17 @@ async function loadRepoView(repoName, fileName) {
       if (zipLink) zipLink.href = repoUrl + '/archive/refs/heads/' + currentBranch + '.zip';
       var cloneBtn = actionsEl.querySelector('#clone-url');
       if (cloneBtn) {
+        // Capture the label so a custom per-repo button text is restored,
+        // instead of hardcoding the default from the standard template.
+        var cloneLabel = cloneBtn.textContent;
         cloneBtn.onclick = async () => {
           try {
             await navigator.clipboard.writeText(cloneUrl);
             cloneBtn.textContent = UI.copiedClone;
-            setTimeout(() => { cloneBtn.textContent = '🐑 Clone URL'; }, 2000);
+            setTimeout(() => { cloneBtn.textContent = cloneLabel; }, 2000);
           } catch (_) {
             cloneBtn.textContent = UI.errorClone;
-            setTimeout(() => { cloneBtn.textContent = '🐑 Clone URL'; }, 2000);
+            setTimeout(() => { cloneBtn.textContent = cloneLabel; }, 2000);
           }
         };
       }
@@ -428,26 +431,18 @@ async function loadRepoView(repoName, fileName) {
     }
 
     // content rendering
-    if (customHTML) {
-      if (contentEl) {
-        var content = await fetchContent(repoName, fileName);
-        if (content) { renderContent(contentEl, content.content, content.file, repoName, currentBranch); showFilepath(fpEl, content.file); }
-        else renderContentNotFound(contentEl, fileName, repoUrl);
-      }
-    } else {
-      if (contentEl) {
-        var content = await fetchContent(repoName, fileName);
-        if (content) { renderContent(contentEl, content.content, content.file, repoName, currentBranch); showFilepath(fpEl, content.file); }
-        else renderContentNotFound(contentEl, fileName, repoUrl);
-      }
+    if (contentEl) {
+      var content = await fetchContent(repoName, fileName);
+      if (content) { renderContent(contentEl, content.content, content.file, repoName, currentBranch); showFilepath(fpEl, content.file); }
+      else renderContentNotFound(contentEl, fileName, repoUrl);
     }
 
     await loadRepoCustomJS(repoName, repoUrl);
     show('repo-view');
   } catch (e) {
     if (e.message === 'RATE_LIMITED') showError(UI.errorRateLimited);
-    else if (e.message === 'NOT_FOUND') showError(UI.errorRepoNotFound(escapeHtml(repoName)));
-    else showError(UI.errorLoading(escapeHtml(repoName), e.message));
+    else if (e.message === 'NOT_FOUND') showError(UI.errorRepoNotFound(repoName));
+    else showError(UI.errorLoading(repoName, e.message));
   }
 }
 
