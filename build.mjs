@@ -1,5 +1,5 @@
 import { build } from 'esbuild';
-import { readFileSync, readdirSync, mkdirSync, copyFileSync, rmSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, mkdirSync, copyFileSync, rmSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
@@ -19,6 +19,7 @@ const FILES = [
 
 const MARKED_VERSION = require('marked/package.json').version;
 const HLJS_VERSION = require('highlight.js/package.json').version;
+const PKG_VERSION = require('./package.json').version;
 
 const LANG_SRC_DIR = path.join(__dirname, 'node_modules/highlight.js/lib/languages');
 const STYLES_SRC_DIR = path.join(__dirname, 'node_modules/highlight.js/styles');
@@ -104,7 +105,7 @@ function sourceBlob() {
 }
 
 function header() {
-  return '/* Repo Tree v0.2.3 - https://github.com/KaioHSG/repo-tree\n' +
+  return '/* Repo Tree v' + PKG_VERSION + ' - https://github.com/KaioHSG/repo-tree\n' +
     '   LICENSE: MIT | Built: ' + new Date().toISOString().slice(0, 10) + '\n' +
     '   Bundled: marked ' + MARKED_VERSION + ', highlight.js core ' + HLJS_VERSION +
     ' (+ ' + BASE_LANGS.length + ' base languages, ' + meta.length + ' lazy modules) */\n';
@@ -263,11 +264,35 @@ async function buildStyles() {
 }
 
 // ---------------------------------------------------------------------------
+// Keep the CDN version pins in sync with package.json.
+// Both the template and the demo site hardcode the released tag in their
+// <script src="...@<version>/repo-tree.min.js">, and the README shows the same
+// URL in its copy-paste examples. They used to be bumped by hand on release.
+// ---------------------------------------------------------------------------
+
+const VERSION_PIN_RE = /(cdn\.jsdelivr\.net\/gh\/KaioHSG\/repo-tree@)[\d.]+(\/repo-tree\.min\.js)/g;
+const VERSION_PIN_FILES = ['template/index.html', 'pages/index.html', 'README.md'];
+
+function syncVersionPins() {
+  for (const f of VERSION_PIN_FILES) {
+    const p = path.join(__dirname, f);
+    if (!existsSync(p)) { console.warn('version pin: missing ' + f); continue; }
+    const src = readFileSync(p, 'utf8');
+    const out = src.replace(VERSION_PIN_RE, (m, pre, post) => pre + PKG_VERSION + post);
+    if (out !== src) {
+      writeFileSync(p, out);
+      console.log('Version pins updated: ' + f + ' -> @' + PKG_VERSION);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
 
 try {
   await buildCore();
   await buildLangModules();
   await buildStyles();
+  syncVersionPins();
 } catch (err) {
   console.error('Build failed:', err.message);
   process.exit(1);
