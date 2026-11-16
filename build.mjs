@@ -11,6 +11,7 @@ const FILES = [
   'src/style.js',
   'src/helper.js',
   'src/utils.js',
+  'src/sanitize.js',
   'src/lang-loader.js',
   'src/renderer.js',
   'src/api.js',

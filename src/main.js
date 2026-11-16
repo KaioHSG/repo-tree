@@ -7,6 +7,7 @@
     BASE + 'style.js',
     BASE + 'helper.js',
     BASE + 'utils.js',
+    BASE + 'sanitize.js',
     BASE + 'lang-loader.js',
     BASE + 'renderer.js',
     BASE + 'api.js',

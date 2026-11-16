@@ -20,6 +20,9 @@ function createRenderer(repo, branch, file) {
 
     link(href, title, text) {
       if (!href) return text;
+      // Neutralise javascript:/data:/vbscript: targets (defense in depth on
+      // top of the sanitizer, and the only guard when it is disabled).
+      if (!isSafeUrl(href, false)) return text;
       if (href.startsWith('http')) {
         return anchor(href, '', text);
       }
@@ -43,7 +46,12 @@ function createRenderer(repo, branch, file) {
 
     image(href, title, text) {
       if (!href) return '';
-      let src = href.startsWith('http') ? href : base + href.replace(/^\.\//, '');
+      if (!isSafeUrl(href, true)) return '';
+      // Scheme-qualified or protocol-relative URLs are used as-is; bare paths
+      // are resolved against the repo's raw base.
+      let src = /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(href)
+        ? href
+        : base + href.replace(/^\.\//, '');
       if (src.includes('shields.io')) {
         const shields = UI.shields || {};
         const s = shields.style;

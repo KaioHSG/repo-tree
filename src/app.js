@@ -219,7 +219,11 @@ function renderContent(el, content, file, repoName, branch) {
   var isMd = ext === '.md';
 
   if (isMd) {
-    el.innerHTML = marked.parse(content, { renderer: createRenderer(repoName, branch, file) });
+    var rendered = marked.parse(content, { renderer: createRenderer(repoName, branch, file) });
+    // Sanitize the rendered HTML before injecting it. Repo content is fetched
+    // from raw.githubusercontent and skips GitHub's own sanitizer, so this is
+    // the only thing standing between a README and the host origin.
+    el.innerHTML = CONFIG.sanitize === false ? rendered : sanitizeHtml(rendered);
   } else {
     var lang = getLangForExtension(file);
     el.innerHTML = h('pre', null, h('code', 'language-' + lang, escapeHtml(content)));

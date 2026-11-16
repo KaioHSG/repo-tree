@@ -11,6 +11,9 @@ const CONFIG = {
   allowedExtensions: [],
   excludeExtensions: [],
   highlightTheme: '1c-light',
+  // Sanitize HTML rendered from repo Markdown (strips scripts, event
+  // handlers and javascript: URLs). Set false only for content you fully trust.
+  sanitize: true,
   extensionToLang: {
     '.json': 'json', '.sh': 'bash', '.yml': 'yaml', '.yaml': 'yaml',
     '.css': 'css', '.js': 'javascript', '.ts': 'typescript', '.html': 'html',

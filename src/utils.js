@@ -54,7 +54,7 @@ function showError(msg) {
 function scrollToHeading(slug, url) {
   const el = document.getElementById(slug);
   if (el) el.scrollIntoView({ behavior: 'smooth' });
-  history.replaceState(null, '', url);
+  if (typeof url === 'string' && url) history.replaceState(null, '', url);
 }
 
 // allowlist / blocklist
