@@ -4,7 +4,8 @@
   "description": "Repo Tree - GitHub repository browser as a self-contained library",
   "main": "repo-tree.min.js",
   "scripts": {
-    "build": "node build.mjs"
+    "build": "node build.mjs",
+    "test": "node --test"
   },
   "keywords": [
     "github",
@@ -14,7 +15,8 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "esbuild": "^0.28.2"
+    "esbuild": "^0.28.2",
+    "linkedom": "^0.18.15"
   },
   "dependencies": {
     "highlight.js": "^11.12.0",
